@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحباً بملكة النكد</title>
+    <style>
+        :root {
+            --primary: #ff477e;
+            --secondary: #7b2cbf;
+            --bg: #fff0f3;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 2px solid var(--primary);
+            animation: fadeIn 1s ease-in;
+        }
+        h1 { color: var(--primary); margin-bottom: 20px; font-size: 24px; }
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+            cursor: pointer;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        button:hover { background: var(--secondary); transform: scale(1.02); }
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #ffe5ec;
+            color: var(--secondary);
+            font-weight: bold;
+            display: none;
+            line-height: 1.6;
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>👑 مرحباً بملكة النكد</h1>
+    <p>طمنيني.. إيه المود اللي هينكد علينا النهاردة؟</p>
+    
+    <select id="moodSelect">
+        <option value="">-- اختاري حالتك الآن --</option>
+        <option value="happy">سعيدة (نكد وقائي)</option>
+        <option value="sad">حزينة (نكد كلاسيكي)</option>
+        <option value="hungry">جعانة (نكد المعدة)</option>
+        <option value="thirsty">عطشانة (نكد الجفاف)</option>
+        <option value="tired">تعبانة (نكد الإرهاق)</option>
+        <option value="bored">زهقانة (نكد الفراغ)</option>
+    </select>
+
+    <button onclick="generateNaked()">استخراج سبب النكد ✨</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function generateNaked() {
+        const mood = document.getElementById('moodSelect').value;
+        const resultDiv = document.getElementById('result');
+        let message = "";
+
+        const ideas = {
+            happy: "مبسوطة؟ أكيد بتفكري في حد تاني غيره، واجهيه فوراً ليه هو مش سبب سعادتك الوحيد! الحب تملك يا ماما.",
+            sad: "لو كان بيحبك فعلاً كان شم على ظهر إيده إنك زعلانة وصالحك من غير ما تنطقي حرف.. الصمت ده خيانة!",
+            hungry: "لو بيحبك مكنش سابك تجوعي.. فين الدليفري؟ فين الاهتمام؟ الحب يعني أكل، وهو مقصر في حق معدتك.",
+            thirsty: "عطشانة؟ وهو قاعد بيشرب مياه عادي ولا فارق معاه جفاف مشاعرك؟ قولي له 'ارتوي أنت وسيبني أنا أموت من الجفاف'.",
+            tired: "تعبانة؟ قولي له إن شيل الهم لوحده مجهد، وإن وجوده في حياتك محتاج مجهود جبار منك عشان تستحمليه.",
+            bored: "زهقانة؟ ده معناه إنه مبقاش يبهرك! اسأليه 'أنت ليه مابقتش بتعملي مفاجآت كل 5 دقائق زي زمان؟'."
+        };
+
+        if(mood) {
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = ideas[mood];
+        } else {
+            alert("لازم تختاري مود عشان نعرف ننكد صح!");
+        }
+    }
+</script>
+
+</body>
+</html>
